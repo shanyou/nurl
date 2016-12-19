@@ -1,4 +1,4 @@
-# nurl
+# nurl [![Build Status](https://travis-ci.org/shanyou/nurl.svg?branch=master)](https://travis-ci.org/shanyou/nurl)
 
 基于Openresty+Redis实现的短链服务
 
