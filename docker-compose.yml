@@ -1,0 +1,14 @@
+nurl:
+  build: .
+#  volumes:
+#    - /data/logs:/openresty/nginx/logs
+  ports:
+   - "8080:80"
+  links:
+     - redis_server
+  environment:
+    - NURL_BUILD_TARGET=private
+    - NURL_BUILD_VERSION=0.1.0
+
+redis_server:
+  image: redis
