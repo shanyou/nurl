@@ -7,7 +7,9 @@ MAINTAINER shanyou
 LABEL appname="resty"
 RUN yum install -y wget curl
 RUN yum groupinstall -y 'Development Tools' \
-&& yum install -y readline-devel pcre-devel openssl-devel
+&& yum install -y readline-devel pcre-devel openssl-devel cpan
+
+RUN (echo y;echo o conf prerequisites_policy follow;echo o conf commit)|cpan
 
 # change time zone
 RUN rm /etc/localtime \
