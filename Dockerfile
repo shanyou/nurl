@@ -34,4 +34,15 @@ WORKDIR ${RESTY_PREFIX}/nginx
 ADD conf/    $RESTY_PREFIX/nginx/conf
 ADD lib/     $RESTY_PREFIX/nginx/lib
 
+# add Test::Nginx perl module
+RUN cd /tmp; git clone https://github.com/openresty/test-nginx.git
+RUN yum install perl-ExtUtils-Embed cpan -y
+RUN yum install -y perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker perl-Test-Base
+RUN echo yes | cpan; exit 0
+RUN yum install -y "perl(Test::Builder)" "perl(HTTP::Response)" "perl(LWP::UserAgent)" "perl(List::MoreUtils)" \
+"perl(Test::LongString)" "perl(Text::Diff)" "perl(URI::Escape)" "perl(URI::Escape)" "perl(Algorithm::Diff)"
+RUN cpan Test::LongString
+RUN cd /tmp/test-nginx; perl Makefile.PL \
+&& make \
+&& make install
 CMD ["./sbin/nginx"]
