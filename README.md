@@ -79,6 +79,11 @@ curl "http://localhost:8080/pack?url=https%3A%2F%2Fgithub.com%2Fshanyou%2Fnurl"
 curl "http://localhost:8080/10001"
 ```
 
+## 单元测试方法
+```shell
+./test.sh
+```
+
 ## 参考
 [短链接服务架构设计与实现](https://www.zybuluo.com/zhangnian88123/note/484298)
 
